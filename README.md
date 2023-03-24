@@ -20,3 +20,4 @@
 - /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
 - curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://192.168.56.230:9200
 - curl -k -XGET "https://192.168.56.230:9200/_cat/nodes?v" -u elastic
+- curl -k -XGET "https://192.168.56.230:9200/_cat/health?v" -u elastic
