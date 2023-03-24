@@ -27,3 +27,8 @@ New value: DL*L6OdqoOqeAa0GEQdq '
 - curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://192.168.56.230:9200
 - curl -k -XGET "https://192.168.56.230:9200/_cat/nodes?v" -u elastic
 - curl -k -XGET "https://192.168.56.230:9200/_cat/health?v" -u elastic
+
+
+# TAMPILAN PADA BROWSER
+
+<img src="Screenshot 2023-03-24-151024.png" alt="Alt text" title="Optional title">
