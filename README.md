@@ -12,12 +12,18 @@
 
 - /usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzMDo5MjAwIl0sImZnciI6IjJlMjNmNTZjNzZhZmFkNTg4OTBmNWZjNzUyNDYzNTA1NGZiZGY4NGY1OWEyY2VlZDYzODQ4NDMwMzk0MTgzMjciLCJrZXkiOiJhVjFoRW9jQndCV19mXzJ1c08xQzpjLWtmdER4MFM0eXJUcDgwLW05eFdRIn0=
 - ansible-playbook -i hosts 4.join-node.yml #merubah semua config cluster
-- ansible-playbook -i hosts 5.restart_node.yml #restart all node
+- ansible-playbook -i hosts 5.restart_all_node.yml #restart all
+- ansible-playbook -i hosts 6.restart_node.yml #restart node 2 dan node 3
 
+
+# PASSWORD ELASTIC
+
+- /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+- ' Password for the [elastic] user successfully reset.
+New value: DL*L6OdqoOqeAa0GEQdq '
 
 # JALANKAN PADA NODE 1
 
-- /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
 - curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://192.168.56.230:9200
 - curl -k -XGET "https://192.168.56.230:9200/_cat/nodes?v" -u elastic
 - curl -k -XGET "https://192.168.56.230:9200/_cat/health?v" -u elastic

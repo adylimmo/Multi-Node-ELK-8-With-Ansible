@@ -1,5 +1,5 @@
-- name: restart node
-  hosts: ansible:node-elk
+- name: restart node 2 dan node 3
+  hosts: node-elk
   become: true
 
   tasks:
