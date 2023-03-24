@@ -5,7 +5,7 @@
 
   tasks:
   - name: remove elasticsearch
-    shell: apt remove --purge elasticsearch -y
+    shell: apt remove --purge elasticsearch -y && rm -rf /var/lib/elasticsearch
     register: results
   - name: show install elastic
     debug:
@@ -20,21 +20,5 @@
     shell: sudo apt-get update && sudo apt-get install elasticsearch -y
     register: results
   - name: show install elastic
-    debug:
-        msg: "{{ results.stdout_lines }}"
-
-- name: show token
-  hosts: ansible
-  become: true
-
-  tasks:
-  - name: reload daemon
-    shell: sudo systemctl daemon-reload
-  - name: reload daemon
-    shell: sudo systemctl enable elasticsearch.service
-  - name: generate token
-    shell: /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node
-    register: results
-  - name: show generate token & copy token
     debug:
         msg: "{{ results.stdout_lines }}"
