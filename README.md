@@ -7,4 +7,3 @@
 - ansible-playbook -i hosts 1.change_hostname.yml #ubah hostname
 - ansible-playbook -i hosts 2.install_single_node.yml #install elasticsearch
 - ansible-playbook -i hosts 3.show_token_node1.yml #show token
-- ansible-playbook -i hosts 4.join_node.yml #join

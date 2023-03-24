@@ -1,0 +1,35 @@
+- name: yml elk1
+  hosts: elk1-ansible
+  become: true
+
+  tasks:
+  - name: delete content /etc/elasticsearch/elasticsearch.yml
+    shell: ">/etc/elasticsearch/elasticsearch.yml"
+  - name: Insert server.cnf from /root/templates/
+    template:
+      src: /home/Multi-Node-ELK-8-With-Ansible/node1-elasticsearch.yml
+      dest: /etc/elasticsearch/elasticsearch.yml
+
+- name: yml elk2
+  hosts: elk2
+  become: true
+
+  tasks:
+  - name: delete content /etc/elasticsearch/elasticsearch.yml
+    shell: ">/etc/elasticsearch/elasticsearch.yml"
+  - name: Insert server.cnf from /root/templates/
+    template:
+      src: /home/Multi-Node-ELK-8-With-Ansible/node2-elasticsearch.yml
+      dest: /etc/elasticsearch/elasticsearch.yml
+
+- name: yml elk3
+  hosts: elk3
+  become: true
+
+  tasks:
+  - name: delete content /etc/elasticsearch/elasticsearch.yml
+    shell: ">/etc/elasticsearch/elasticsearch.yml"
+  - name: Insert server.cnf from /root/templates/
+    template:
+      src: /home/Multi-Node-ELK-8-With-Ansible/node3-elasticsearch.yml
+      dest: /etc/elasticsearch/elasticsearch.yml

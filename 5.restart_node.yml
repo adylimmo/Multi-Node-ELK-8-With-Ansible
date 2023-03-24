@@ -1,0 +1,14 @@
+- name: join node
+  hosts: node-elk
+  become: true
+
+  tasks:
+  - name: increase timeout
+    shell: sed -i.old 's/TimeoutStartSec=75/TimeoutStartSec=9999/'  /usr/lib/systemd/system/elasticsearch.service
+  - name: reload daemon
+    shell: sudo systemctl daemon-reload
+  - name: reload daemon
+    shell: sudo systemctl enable elasticsearch.service
+  - name: start daemon
+    shell: sudo systemctl start elasticsearch.service
+ 
