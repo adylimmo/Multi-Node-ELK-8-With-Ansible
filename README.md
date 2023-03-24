@@ -32,3 +32,15 @@ New value: UBu85_4DiQusVaHSjKC4 '
 # TAMPILAN PADA BROWSER
 
 <img src="Screenshot 2023-03-24-151024.png" alt="Alt text" title="Optional title">
+
+
+
+
+
+
+#  INSTALL KIBANA DI NODE 2
+
+- https://www.elastic.co/guide/en/kibana/current/deb.html
+- /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana 
+- eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzMTo5MjAwIl0sImZnciI6ImQzZTUwY2Y3M2U4ODdiNmI2OTczYTQ0ZWI2ZjQyYmIwOWVmNWJjODYxZjcxYzhmODY4OTRkYjRkNGM2NDMwOWYiLCJrZXkiOiJkeUs3RkljQmZkWV9lR1haelpyZDp3UGRZQ05fTFRLZTFUOTBiQWtaRGNnIn0=
+- 
