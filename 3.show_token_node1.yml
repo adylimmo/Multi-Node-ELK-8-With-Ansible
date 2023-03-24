@@ -1,15 +1,15 @@
-- name: show token
+- name: show token node 1
   hosts: ansible
   become: true
 
   tasks:
-  - name: timeout
+  - name: increase timeout
     shell: sed -i.old 's/TimeoutStartSec=75/TimeoutStartSec=9999/'  /usr/lib/systemd/system/elasticsearch.service
   - name: delete content /etc/elasticsearch/elasticsearch.yml
     shell: ">/etc/elasticsearch/elasticsearch.yml"
   - name: Insert server.cnf from /root/templates/
     template:
-      src: /home/Multi-Node-ELK-8-With-Ansible/node1-elasticsearch.yml
+      src: /home/Multi-Node-ELK-8-With-Ansible/single-elasticsearch.yml
       dest: /etc/elasticsearch/elasticsearch.yml
   - name: reload daemon
     shell: sudo systemctl daemon-reload

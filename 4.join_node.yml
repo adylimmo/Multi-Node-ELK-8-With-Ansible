@@ -1,0 +1,19 @@
+- name: join node
+  hosts: node-elk
+  become: true
+
+  tasks:
+  - name: increase timeout
+    shell: sed -i.old 's/TimeoutStartSec=75/TimeoutStartSec=9999/'  /usr/lib/systemd/system/elasticsearch.service
+  - name: join nodes
+    expect:
+      command: /usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzMDo5MjAwIl0sImZnciI6IjMxZTgwMWZmYzM2NjUzYWNiYzYzZjhjNmNkYmQ3MmNiYmYzOTcxYjc1ZmMxMDMwZjg3MzJhMzhmNjM3MTkxYmUiLCJrZXkiOiJUeHJiRVljQnJ1NFMtZFhkU0EzNTpuazVSZl9DR1JfT203Q2dkQTFvRFdnIn0=
+      responses:
+        'Do you want to continue with the reconfiguration process [y/N]': 'y'
+  - name: reload daemon
+    shell: sudo systemctl daemon-reload
+  - name: reload daemon
+    shell: sudo systemctl enable elasticsearch.service
+  - name: start daemon
+    shell: sudo systemctl start elasticsearch.service
+ 
