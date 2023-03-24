@@ -7,12 +7,12 @@
   - name: remove elasticsearch
     shell: apt remove --purge elasticsearch -y && rm -rf /var/lib/elasticsearch
     register: results
-  - name: show install elastic
+  - name: show remove elasticsearch
     debug:
         msg: "{{ results.stdout_lines }}"
   - name: install & update
     shell: sudo apt-get update && apt install wget curl git apt-transport-https -y
-  - name: add repo
+  - name: download gpg
     shell: rm -rf /usr/share/keyrings/elasticsearch-keyring.gpg && wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
   - name: add repo
     shell: echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list

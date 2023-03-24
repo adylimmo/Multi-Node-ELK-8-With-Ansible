@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: udemy
+cluster.name: cluster-testing
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: node-3
+node.name: elk3
 #
 # Add custom attributes to the node:
 #
@@ -72,7 +72,7 @@ discovery.seed_hosts: ["192.168.56.230", "192.168.56.231"] # Change it!
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
-cluster.initial_master_nodes: ["node-1", "node-2", "node-3"]
+cluster.initial_master_nodes: ["elk1-ansible","elk2","elk3"]
 #
 # For more information, consult the discovery and cluster formation module documentation.
 #

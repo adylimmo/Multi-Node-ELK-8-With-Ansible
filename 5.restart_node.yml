@@ -1,5 +1,5 @@
-- name: join node
-  hosts: node-elk
+- name: restart node
+  hosts: ansible:node-elk
   become: true
 
   tasks:
@@ -7,8 +7,22 @@
     shell: sed -i.old 's/TimeoutStartSec=75/TimeoutStartSec=9999/'  /usr/lib/systemd/system/elasticsearch.service
   - name: reload daemon
     shell: sudo systemctl daemon-reload
-  - name: reload daemon
+  - name: enable elastic
     shell: sudo systemctl enable elasticsearch.service
-  - name: start daemon
+  - name: start elastic
     shell: sudo systemctl start elasticsearch.service
+  - name: restart elastic
+    shell: sudo systemctl restart elasticsearch.service
+  - name: status elastic
+    shell: sudo systemctl status elasticsearch.service
+    register: results
+  - name: show status elastic
+    debug:
+        msg: "{{ results.stdout_lines }}"
+  - name: show port
+    shell: ss -altnp | grep -iE '92|93'
+    register: results
+  - name: show port
+    debug:
+        msg: "{{ results.stdout_lines }}"
  

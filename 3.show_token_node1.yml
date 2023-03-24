@@ -7,15 +7,15 @@
     shell: sed -i.old 's/TimeoutStartSec=75/TimeoutStartSec=9999/'  /usr/lib/systemd/system/elasticsearch.service
   - name: delete content /etc/elasticsearch/elasticsearch.yml
     shell: ">/etc/elasticsearch/elasticsearch.yml"
-  - name: Insert server.cnf from /root/templates/
+  - name: Insert content /etc/elasticsearch/elasticsearch.yml from /home/Multi-Node-ELK-8-With-Ansible/single-elasticsearch.yml
     template:
       src: /home/Multi-Node-ELK-8-With-Ansible/single-elasticsearch.yml
       dest: /etc/elasticsearch/elasticsearch.yml
   - name: reload daemon
     shell: sudo systemctl daemon-reload
-  - name: reload daemon
+  - name: enable elastic
     shell: sudo systemctl enable elasticsearch.service
-  - name: start daemon
+  - name: start elastic
     shell: sudo systemctl start elasticsearch.service
   - name: generate token
     shell: /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node
