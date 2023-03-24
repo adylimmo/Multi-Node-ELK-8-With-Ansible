@@ -1,0 +1,40 @@
+---
+- name: Install & update
+  hosts: ansible:node-elk
+  become: true
+
+  tasks:
+  - name: remove elasticsearch
+    shell: apt remove --purge elasticsearch -y
+    register: results
+  - name: show install elastic
+    debug:
+        msg: "{{ results.stdout_lines }}"
+  - name: install & update
+    shell: sudo apt-get update && apt install wget curl git apt-transport-https -y
+  - name: add repo
+    shell: wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+  - name: add repo
+    shell: echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+  - name: install elastic
+    shell: sudo apt-get update && sudo apt-get install elasticsearch -y
+    register: results
+  - name: show install elastic
+    debug:
+        msg: "{{ results.stdout_lines }}"
+
+- name: show token
+  hosts: ansible
+  become: true
+
+  tasks:
+  - name: reload daemon
+    shell: sudo systemctl daemon-reload
+  - name: reload daemon
+    shell: sudo systemctl enable elasticsearch.service
+  - name: generate token
+    shell: /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node
+    register: results
+  - name: show generate token & copy token
+    debug:
+        msg: "{{ results.stdout_lines }}"
