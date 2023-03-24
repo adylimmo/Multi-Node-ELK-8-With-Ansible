@@ -1,0 +1,4 @@
+- hosts: ansible:node-elk
+  tasks:
+    - name: set system hostname
+      command: hostnamectl set-hostname {{ inventory_hostname }}
