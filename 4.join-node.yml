@@ -5,7 +5,7 @@
   tasks:
   - name: delete content /etc/elasticsearch/elasticsearch.yml
     shell: ">/etc/elasticsearch/elasticsearch.yml"
-  - name: Insert server.cnf from /root/templates/
+  - name: Insert new file
     template:
       src: /home/Multi-Node-ELK-8-With-Ansible/node1-elasticsearch.yml
       dest: /etc/elasticsearch/elasticsearch.yml
@@ -17,7 +17,7 @@
   tasks:
   - name: delete content /etc/elasticsearch/elasticsearch.yml
     shell: ">/etc/elasticsearch/elasticsearch.yml"
-  - name: Insert server.cnf from /root/templates/
+  - name: Insert new file
     template:
       src: /home/Multi-Node-ELK-8-With-Ansible/node2-elasticsearch.yml
       dest: /etc/elasticsearch/elasticsearch.yml
@@ -29,7 +29,7 @@
   tasks:
   - name: delete content /etc/elasticsearch/elasticsearch.yml
     shell: ">/etc/elasticsearch/elasticsearch.yml"
-  - name: Insert server.cnf from /root/templates/
+  - name: Insert new file
     template:
       src: /home/Multi-Node-ELK-8-With-Ansible/node3-elasticsearch.yml
       dest: /etc/elasticsearch/elasticsearch.yml

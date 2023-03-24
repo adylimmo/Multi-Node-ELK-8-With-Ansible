@@ -21,6 +21,7 @@ cluster.name: cluster-testing
 # Use a descriptive name for the node:
 #
 node.name: elk3
+node.roles: [ master, data ]
 #
 # Add custom attributes to the node:
 #
