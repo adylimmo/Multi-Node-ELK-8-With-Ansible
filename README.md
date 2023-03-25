@@ -68,3 +68,27 @@ output.elasticsearch:
 ```
 - ./metricbeat -e
 - ./metricbeat setup --dashboards
+
+# INSTALL METRICBEAT NODE 2
+
+- sudo apt-get update && sudo apt-get install metricbeat -y
+
+```
+#######edit file metricbeat.yml
+setup.kibana:
+  host: "http://192.168.56.231:5601"
+  ssl.verification_mode: "none"
+
+output.elasticsearch:
+  hosts: ["https://192.168.56.230:9200"]
+  protocol: "https"
+  #api_key: "id:api_key"
+  username: "elastic"
+  password: "UBu85_4DiQusVaHSjKC4"
+  ssl.verification_mode: "none"
+#######edit file metricbeat.yml
+```
+
+- sudo systemctl enable metricbeat && sudo systemctl start metricbeat
+- sudo metricbeat -e
+- sudo metricbeat setup --dashboards
