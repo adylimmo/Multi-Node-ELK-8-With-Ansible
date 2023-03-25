@@ -46,7 +46,7 @@ New value: UBu85_4DiQusVaHSjKC4 '
 - 
 
 
-# install metricbeat
+# INSTALL METRICBEAT FILE
 
 - wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.6.2-linux-x86_64.tar.gz
 - tar -xvf metricbeat-8.6.2-linux-x86_64.tar.gz
