@@ -44,3 +44,25 @@ New value: UBu85_4DiQusVaHSjKC4 '
 - /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana 
 - eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzMTo5MjAwIl0sImZnciI6ImQzZTUwY2Y3M2U4ODdiNmI2OTczYTQ0ZWI2ZjQyYmIwOWVmNWJjODYxZjcxYzhmODY4OTRkYjRkNGM2NDMwOWYiLCJrZXkiOiJkeUs3RkljQmZkWV9lR1haelpyZDp3UGRZQ05fTFRLZTFUOTBiQWtaRGNnIn0=
 - 
+
+
+# install metricbeat
+
+- wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.6.2-linux-x86_64.tar.gz
+- tar -xvf metricbeat-8.6.2-linux-x86_64.tar.gz
+- cd metricbeat-8.6.2-linux-x86_64
+#######edit file metricbeat.yml
+setup.kibana:
+  host: "http://192.168.56.231:5601"
+  ssl.verification_mode: "none"
+
+output.elasticsearch:
+  hosts: ["https://192.168.56.230:9200"]
+  protocol: "https"
+  #api_key: "id:api_key"
+  username: "elastic"
+  password: "UBu85_4DiQusVaHSjKC4"
+  ssl.verification_mode: "none"
+#######edit file metricbeat.yml
+- ./metricbeat -e
+- ./metricbeat setup --dashboards
