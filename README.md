@@ -51,6 +51,7 @@ New value: UBu85_4DiQusVaHSjKC4 '
 - wget https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.6.2-linux-x86_64.tar.gz
 - tar -xvf metricbeat-8.6.2-linux-x86_64.tar.gz
 - cd metricbeat-8.6.2-linux-x86_64
+```
 #######edit file metricbeat.yml
 setup.kibana:
   host: "http://192.168.56.231:5601"
@@ -64,5 +65,6 @@ output.elasticsearch:
   password: "UBu85_4DiQusVaHSjKC4"
   ssl.verification_mode: "none"
 #######edit file metricbeat.yml
+```
 - ./metricbeat -e
 - ./metricbeat setup --dashboards
