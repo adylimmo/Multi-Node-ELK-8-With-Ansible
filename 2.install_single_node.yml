@@ -6,6 +6,7 @@
   tasks:
   - name: remove elasticsearch
     shell: apt remove --purge elasticsearch -y && rm -rf /var/lib/elasticsearch
+    ignore_errors: true
     register: results
   - name: show remove elasticsearch
     debug:

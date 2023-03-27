@@ -54,7 +54,7 @@ path.logs: /var/log/elasticsearch
 # By default Elasticsearch is only accessible on localhost. Set a different
 # address here to expose this node on the network:
 #
-network.host: 192.168.56.232
+network.host: 192.168.56.236
 #
 # By default Elasticsearch listens for HTTP traffic on the first free port it
 # finds starting at 9200. Set a specific HTTP port here:
@@ -69,7 +69,7 @@ http.port: 9200
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
 # discovery.seed_hosts: ["node1_ip", "node2_ip"] # Change it! 
-discovery.seed_hosts: ["192.168.56.230", "192.168.56.231"] # Change it! 
+discovery.seed_hosts: ["192.168.56.234", "192.168.56.235"] # Change it! 
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #

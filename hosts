@@ -1,6 +1,6 @@
 [ansible]
-elk1-ansible ansible_ssh_host=192.168.56.230
+elk1-ansible ansible_ssh_host=192.168.56.234
 
 [node-elk]
-elk2 ansible_ssh_host=192.168.56.231
-elk3 ansible_ssh_host=192.168.56.232
+elk2 ansible_ssh_host=192.168.56.235
+elk3 ansible_ssh_host=192.168.56.236

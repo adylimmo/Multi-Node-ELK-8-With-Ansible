@@ -10,7 +10,7 @@
 
 # PASTIKAN TOKEN SUDAH DI TAMBAHKAN PADA NODE LAINNYA.
 
-- /usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzMDo5MjAwIl0sImZnciI6ImQzZTUwY2Y3M2U4ODdiNmI2OTczYTQ0ZWI2ZjQyYmIwOWVmNWJjODYxZjcxYzhmODY4OTRkYjRkNGM2NDMwOWYiLCJrZXkiOiI0SnlKRkljQnRQaXlZdVpDRll0RTpDbUYyZlZVa1I3V2hIX09tbjVoZUFRIn0=
+- /usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzNDo5MjAwIl0sImZnciI6IjZhYjkwMDNiMzQ0ZDVkOTE3OTEzYmU5YzliYmM5NDEzMGRjMzBhZDJjNjY5YjFiMWQyZDQ3YWJjOGQ0MjNjNDUiLCJrZXkiOiJSSXd6SVljQnp1dmFwNHNyaEZUYzpRQkxaaUlxVFFXNnhNdEJjMVlBOXR3In0=
 - ansible-playbook -i hosts 4.join-node.yml #merubah semua config cluster
 - ansible-playbook -i hosts 5.restart_all_node.yml #restart all
 - ansible-playbook -i hosts 6.restart_node.yml #restart node 2 dan node 3
@@ -20,13 +20,13 @@
 
 - /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
 - ' Password for the [elastic] user successfully reset.
-New value: UBu85_4DiQusVaHSjKC4 '
+New value: SxXWmPDRGtT0qGzI5egb '
 
 # JALANKAN PADA NODE 1
 
-- curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://192.168.56.230:9200
-- curl -k -XGET "https://192.168.56.230:9200/_cat/nodes?v" -u elastic
-- curl -k -XGET "https://192.168.56.230:9200/_cat/health?v" -u elastic
+- curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://192.168.56.234:9200
+- curl -k -XGET "https://192.168.56.235:9200/_cat/nodes?v" -u elastic
+- curl -k -XGET "https://192.168.56.236:9200/_cat/health?v" -u elastic
 
 
 # TAMPILAN PADA BROWSER
@@ -41,9 +41,16 @@ New value: UBu85_4DiQusVaHSjKC4 '
 #  INSTALL KIBANA DI NODE 2
 
 - https://www.elastic.co/guide/en/kibana/current/deb.html
+- apt install kibana -y
+```
+# Kibana config kibana.yml
+server.port: 5601
+server.host: "0.0.0.0"
+```
+- systemctl enable kibana && systemctl start kibana && systemctl restart kibana
 - /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana 
-- eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzMTo5MjAwIl0sImZnciI6ImQzZTUwY2Y3M2U4ODdiNmI2OTczYTQ0ZWI2ZjQyYmIwOWVmNWJjODYxZjcxYzhmODY4OTRkYjRkNGM2NDMwOWYiLCJrZXkiOiJkeUs3RkljQmZkWV9lR1haelpyZDp3UGRZQ05fTFRLZTFUOTBiQWtaRGNnIn0=
-- 
+``` eyJ2ZXIiOiI4LjYuMiIsImFkciI6WyIxOTIuMTY4LjU2LjIzNTo5MjAwIl0sImZnciI6IjZhYjkwMDNiMzQ0ZDVkOTE3OTEzYmU5YzliYmM5NDEzMGRjMzBhZDJjNjY5YjFiMWQyZDQ3YWJjOGQ0MjNjNDUiLCJrZXkiOiItQmRISVljQjhSTjhyY1ZoVWpCbTo0b0pRN1BZalFSRzlQT3pDLU02QjRBIn0=
+```
 
 
 # INSTALL METRICBEAT FILE
