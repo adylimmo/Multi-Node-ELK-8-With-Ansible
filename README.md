@@ -92,3 +92,4 @@ output.elasticsearch:
 - sudo systemctl enable metricbeat && sudo systemctl start metricbeat
 - sudo metricbeat -e
 - sudo metricbeat setup --dashboards
+- metricbeat test output
